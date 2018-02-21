@@ -1,4 +1,12 @@
-## You Don't Know JS: Types & Grammar
+# You Don't Know JS: Types & Grammar
+
+* [Chapter 1: Types]()
+* [Chapter 2: Values]()
+* [Chapter 3: Natives]()
+* [Chapter 4: Coercion]()
+* [Chapter 5: Grammar]()
+
+## Chapter 1: Types
 
 ### Built in types
 JavaScript defines seven built-in types:
@@ -50,3 +58,19 @@ typeof b; // "undefined"
 ```
 
 However, the safety guard (preventing an error) on typeof when used against an undeclared variable can be helpful in certain cases.
+
+## Chapter 3: Natives
+
+### Object Wrapper 
+```javascript
+var a = new String ("b")
+
+var b = 'b'
+
+typeof a 
+"object" 
+
+typeof b
+"string"
+```
+Het verschil is dus dat met ```new String``` het een object is, en anders een string.
