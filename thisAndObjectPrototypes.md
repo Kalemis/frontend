@@ -18,9 +18,9 @@
 ```This``` is not an author-time binding but a runtime binding. It is contextual based on the conditions of the function's invocation. ```This``` binding has nothing to do with where a function is declared, but has instead everything to do with the manner in which the function is called.
 
 ```This``` is actually a binding that is made when a function is invoked, and what it references is determined entirely by the call-site where the function is called.
+
 ## This all makes sense now
 
-This is an h2 heading
 
 ## Objects
 
