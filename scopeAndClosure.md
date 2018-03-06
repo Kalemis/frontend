@@ -45,3 +45,6 @@ function myLittleFunction() {
 Nu gaat de code wel goed.
 
 **Hoisting:** je variabele en functie declaraties die je doet worden naar de top van de functie getakeld/gehoist. Ze worden eerst gedeclareerd, ookal heb je ze pas later neergezet.
+
+### Iffe
+
