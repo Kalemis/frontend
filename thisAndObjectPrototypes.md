@@ -8,6 +8,7 @@
 - [Behavior delegation](#behavior-delegation)
 - [ES6 Class](#ES6-class)
 - [Thank You](#thank-you)
+- [College Notes](#college-notes)
 
 ## This or that
 
@@ -46,7 +47,34 @@ This is an h3 heading
 
 ## Thank You
 
-This is an h1 heading
+## College Notes
+
+### This
+- Runtime binding. 
+- Verwijst naar de context waar je op het moment in zit, niet naar de scope.
+
+``` javascript
+var clowns = new Array() // array literal (met new maak je een object aan)
+var clown = {
+  name: 'Pipo', //name: key - pipo: value
+  shoeSize: 80,
+  laugh: function(){
+    console.log('Ik heet ' + clown.name + ' hahahaha')
+    console.log('Ik heet ' + this.name + ' hahahaha')
+  }
+} // object literal
+```
+
+Een object kan **properties** of **methods** hebben.
+Properties: een clown heeft een naam, een schoen een maat. (key/value pairs)
+Methods: een clown kan lachen/huilen (acties die een clown kan uitvoeren)
+
+**Dot notation:** methods en properties aanroepen. Zoals ```clown.name``` of ```this.name```.  
+**This:** This wordt in de scope van de functie automatisch gegenereerd en het verwijst naar het object waar je op dat moment in zit, oftewel de context.
+
+### Constructor functie
+Alleen *constructor* functies beginnen met een hoofdletter.
+Soort blauwdruk waar je aan de hand daarvan objecten kan maken.
 
 
-This is an h3 heading
+
