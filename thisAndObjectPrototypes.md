@@ -20,7 +20,11 @@
 ```This``` is actually a binding that is made when a function is invoked, and what it references is determined entirely by the call-site where the function is called.
 
 ## This all makes sense now
+**Call site**: the location in code where a function is called (not where it's declared).  
+**Call stack**: the stack of functions that have been called to get us to the current moment in execution.  
+**Tip**: To see the call stack, go to the developer tools in the browser and set a breakpoint on the function. The tool will show you a list of functions that have been called to get to that line, which will be your call stack. Now find the second item from the top, that will show you the real call-site.  
 
+###
 
 ## Objects
 
