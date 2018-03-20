@@ -7,6 +7,7 @@
 - [Generators](#generators)  
 - [Program performance](#program-performance)  
 - [Benchmarking and tuning](#benchmarking-and-tuning)  
+- [College notes](#college-notes)
 
 ## Asynchrony now and later
 
@@ -85,4 +86,13 @@ If you have code that uses callbacks, especially but not exclusively with third-
 
 ## Benchmarking and tuning
 
+## College notes
+
+**JSON:**  
+JavaScript Object Notation. 
+
+**JSON.parse:**  
+Parse deze string naar echte JavaScript objecten.
+
+**XMLHttpRequest:**  
 
