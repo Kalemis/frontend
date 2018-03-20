@@ -95,4 +95,9 @@ JavaScript Object Notation.
 Parse deze string naar echte JavaScript objecten.
 
 **XMLHttpRequest:**  
+```new``` = nieuw object
 
+```javascript
+var request = new XMLHttpRequest();
+```
+Hier maak je een nieuw http request aan.
