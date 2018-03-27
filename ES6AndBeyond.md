@@ -3,6 +3,7 @@
 - [ES now and future](#es-now-and-future)
 - [Syntax](#syntax)
 - [College Notes](#college-notes)
+- [Tentamen](#tentamen)
 
 ## ES now and future
 
@@ -30,3 +31,8 @@ Begint met ```new```.
 Gallery(); //functie
 myBeautifulGallery = newGallery(); //Hiermee kan je objecten constructen.
 ```
+
+## Tentamen
+Laatste practicum zijn oefententamens en moment om vragen te stellen. 
+
+
