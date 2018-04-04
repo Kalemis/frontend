@@ -36,7 +36,15 @@ function foo(a) {
 foo( 2 ); // 2 4 12
 ```
 In the example above console.log will first find ```c``` than ```b``` and than ```a```. But if there had been a ```c``` both in bar and in foo, it would have stopped looking for ```c``` in bar because it had already found it.  
-**Scope look-up stops once it finds the first match.**
+**Scope look-up starts at the innermost scope being executed at the time, and works its way outward/upward until it finds the first match.**
+
+### Cheating the lexical scope
+There are 2 ways to cheat the lexical scope: 
+- ```eval(..)```
+- ```with```
+
+#### ```eval(..)```
+```eval(..)``` can modify existing lexical scope (at runtime)
 
 
 ## Function vs Block Scope
