@@ -29,21 +29,13 @@
 
 ## Objects
 
-This is an h3 heading
-
 ## Mixing up class objects
 
-This is an h1 heading
-
 ## Prototypes
-
-This is an h2 heading
 
 ## Behavior delegation
 
 ## ES6 Class
-
-This is an h3 heading
 
 ## Thank You
 
