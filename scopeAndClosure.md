@@ -58,6 +58,63 @@ The downside to these mechanisms is that it defeats the Engine's ability to perf
 
 ## Function vs Block Scope
 
+### Scope from functions
+Each function you declare creates its own scope. Variables and functions that are declared inside another function are essentially "hidden" from any of the enclosing "scopes", which is an intentional design principle of good software.
+
+### Hiding in plain scope
+"Hiding" variables and fuctions: 
+Instead of declaring a function and than adding code inside it, you can also think of it as the other way around. So, take a section of code you've written and wrap a function declaration around it which "hides" the code. Now you've created a scope around the code in question.  
+*This is considered better software: principle of least privilege*
+
+Another benefit of "hiding" variables and functions inside a scope is to avoid unintended collision between two different identifiers with the same name but different intended usages.
+Another option for collision avoidance is the more modern "module" approach, using any of various dependency managers. (this is a tool)
+
+### Functions as Scopes
+
+Compare the following to code snippets.
+``` javascript 
+function foo() {
+//some code
+};
+```
+```javascript
+(function foo(){
+//some code
+});
+```
+In the first code snippet foo is polluting the global scope. In the second code snippet foo is only accesible inside itself. The function is here treated as a function expression.
+
+#### Anonymous vs named
+Only function expressions can be anonymous. But it's better to name it anyway.
+Function declarations cannot be anonymous, it would be illegal JS grammar.
+
+#### Invoking function expressions immediately (IFFE)
+Now that we have a function as an expression by virtue of wrapping it in a ```( )``` pair, we can execute that function by adding another ```()``` on the end, like ```(function foo(){ .. })()```. The first enclosing ```( )``` pair makes the function an expression, and the second ```()``` executes the function.
+
+A variation on the IFFE looks like this: ```(function(){ .. }())```. Which you use is a pure stylistic preference. They work either way.
+
+### Blocks as scopes
+Block scope is all about declaring variables as close as possible, as local as possible, to where they will be used.  
+Block-scope refers to the idea that variables and functions can belong to an arbitrary block (generally, any { .. } pair) of code, rather than only to the enclosing function.
+
+#### ```let```
+The ```let``` keyword attaches the variable declaration to the scope of whatever block (commonly a ```{ .. }``` pair) it's contained in. In other words, let implicitly hijacks any block's scope for its variable declaration.
+
+Declarations made with let will not hoist to the entire scope of the block they appear in
+
+##### ```let``` loops
+``` javascript
+for (let i=0; i<10; i++) {
+	console.log( i );
+}
+
+console.log( i ); // ReferenceError
+```
+Not only does let in the for-loop header bind the i to the for-loop body, but in fact, it re-binds it to each iteration of the loop, making sure to re-assign it the value from the end of the previous loop iteration.
+
+#### ```const```
+Creates a block-scoped variable, but whose value is fixed (constant). Any attempt to change that value at a later time results in an error.
+
 ## Hoisting
 
 ## Scope closures
