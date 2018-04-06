@@ -117,6 +117,46 @@ Creates a block-scoped variable, but whose value is fixed (constant). Any attemp
 
 ## Hoisting
 
+``` javascript
+a = 2;
+
+var a;
+
+console.log(a); //output: 2
+```
+
+``` javascript
+console.log(a); //output: undefined
+var a = 2;
+```
+
+So, what is going on here?
+When you see ```var a = 2;```, you probably think of that as one statement. But JavaScript actually thinks of it as two statements: ```var a;``` and ```a = 2;```. The first statement, the declaration, is processed during the compilation phase. The second statement, the assignment, is left in place for the execution phase. **Thus, the declaration first and then the assignment**. 
+
+The *Engine* handles the first code snippet like this: 
+``` javascript
+var a;
+```
+``` javascript
+a = 2;
+console.log(a);
+```
+
+The second code snippet like this: 
+``` javascript
+var a;
+```
+``` javascript
+console.log(a);
+a = 2;
+```
+So, the declarations are "moved" to the top, they are *hoisted*. But, they are not hoisted to the top of the program but to the top of the scope!
+
+### Functions first
+Functions are hoisted first and then variables.
+
+While multiple/duplicate ```var``` declarations are effectively ignored, subsequent function declarations do override previous ones. It's probably best to avoid declaring functions in blocks.
+
 ## Scope closures
 
 ## College Notes
