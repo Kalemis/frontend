@@ -39,13 +39,22 @@ In the example above console.log will first find ```c``` than ```b``` and than `
 **Scope look-up starts at the innermost scope being executed at the time, and works its way outward/upward until it finds the first match.**
 
 ### Cheating the lexical scope
-There are 2 ways to cheat the lexical scope: 
+There are 2 ways to cheat the lexical scope (both modify at runtime): 
 - ```eval(..)```
 - ```with```
 
 #### ```eval(..)```
-```eval(..)``` can modify existing lexical scope (at runtime)
+```eval(..)``` takes a string as an argument, and treats the contents of the string as if it had actually been authored code at that point in the program. So, you can programmatically generate code inside of your authored code, and run the generated code as if it had been there at author time.
 
+### ```with```
+What is ```with```?  
+Short-hand for making multiple property references against an object *without* repeating the object reference itself each time.
+
+How to cheat lexical scope with ```with```:
+The with statement takes an object, one which has zero or more properties, and treats that object as if it is a wholly separate lexical scope, and thus the object's properties are treated as lexically defined identifiers in that "scope".
+
+### Why you shouldn't use them
+The downside to these mechanisms is that it defeats the Engine's ability to perform compile-time optimizations regarding scope look-up, because the Engine has to assume pessimistically that such optimizations will be invalid. Code will run slower as a result of using either feature. Don't use them.
 
 ## Function vs Block Scope
 
