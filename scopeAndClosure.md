@@ -159,6 +159,45 @@ While multiple/duplicate ```var``` declarations are effectively ignored, subsequ
 
 ## Scope closures
 
+### Lees dit goed, erg lastig
+
+**Closure is all around you in JavaScript, you just have to recognize and embrace it.** Closures are already occuring all over your code.
+
+Definition of closure:  
+Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope. 
+
+``` javascript 
+function foo() {
+	var a = 2;
+
+	function bar() {
+		console.log( a );
+	}
+
+	return bar;
+}
+
+var baz = foo();
+
+baz(); // 2 -- Whoa, closure was just observed, man.
+```
+
+The function ```bar()``` has lexical scope access to the inner scope of ```foo()```. But then, we take ```bar()```, the function itself, and pass it as a value. In this case, we return the function object itself that ```bar``` references.
+
+After we execute ```foo()```, we assign the value it returned (our inner ```bar()``` function) to a variable called ```baz```, and then we actually invoke ```baz()```, which of course is invoking our inner function ```bar()```, just by a different identifier reference.
+
+```bar()``` is executed, for sure. But in this case, it's executed outside of its declared lexical scope.
+
+By virtue of where it was declared, ```bar()``` has a lexical scope closure over that inner scope of ```foo()```, which keeps that scope alive for ```bar()``` to reference at any later time.
+
+**```bar()``` still has a reference to that scope, and that reference is called closure.**
+
+### Modules 
+To state it more simply, there are two "requirements" for the module pattern to be exercised:
+1. There must be an outer enclosing function, and it must be invoked at least once (each time creates a new module instance).
+2. The enclosing function must return back at least one inner function, so that this inner function has closure over the private scope, and can access and/or modify that private state.
+
+
 ## College Notes
 
 ### Closure
