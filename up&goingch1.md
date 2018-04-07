@@ -131,3 +131,88 @@ Finally, don't neglect the power of practice. The best way to learn how to write
 I'm excited you're well on your way to learning how to code, now! Keep it up. Don't forget to check out other beginner programming resources (books, blogs, online training, etc.). This chapter and this book are a great start, but they're just a brief introduction.
 
 The next chapter will review many of the concepts from this chapter, but from a more JavaScript-specific perspective, which will highlight most of the major topics that are addressed in deeper detail throughout the rest of the series.
+
+# Up&going ch2
+
+In de console heb je de type of operator die je verteld war de value is van iets.
+Var a = 42
+Type of a = number
+
+Objects	Meerdere properties met hun eigen value van verschillende soorten bij elkaar zetten
+
+Arrays	Slaat meerdere properties met hun eigen value van elke soort type op in numerieke volgorde
+
+Voorbeelden built-in type methodes
+Var a = ‘hello world’
+Var b = 3.14125
+
+a.length;		11
+a.toUpperCase();	“HELLO WORLD”
+b.toFixed(4);		3.1416
+
+Comparing values	Komt altijd een boolean uit (treu/false)
+
+
+coercian	var a = “42”			// “42”
+		var b = number(a)		// 42
+
+
+Truthly				Falsy
+“x”				“ “
+42				0, -0, NaN
+true				null, undefined
+[ ], [1,2,3]			false
+{ }, {a:42}
+function fo() { }
+
+Variable namen moeten valide identifiers zijn, dat zijn ze als ze starten met a-z, A-Z, $, _
+
+Hoisting	Als de variable boven de scope worden benoemd
+
+Nested scopes	Als je een variable in een scope benoemd is deze in de hele scope te gebruiken, ook in de lower/inner scopes. 			Maar de inner niet in die daarbuiten
+
+LET	Door let te gebruiken inplaats van var wordt het alleen op die plek bruikbaar in plaats van door heel dat block of de 		functie
+
+Inplaats van if, else if, else if, else kun je ook een switch statement gebruiken
+
+Switch(a){
+
+	Case a;
+	// do something
+
+	Defautl;
+	// fall back to here
+
+}
+
+
+Wat je ook kunt doen inplaats van een if,else
+
+var a = 42;
+var b = (a>41)?”Hello”:”World”;
+
+Strict mode	Zorgt ervoor dat je betere ‘seare’ javascript schrijft. Omdat het bad syntax into real errors. “use strict” zet je bijvoorbeeld boven in een functie of helemaal boven in je code.
+
+IIFE	Immediately Invoked Function Expressions. Door de code als een IIFE te schrijven wordt deze gelijk gedefineerd en gelijk uitgevoerd
+
+( funtion(){
+			…
+})();
+
+De eerste ()	Deze functie moet anders behandelt worden
+De tweede ()	De functie moet gelijk uitgevoerd worden
+
+Closure	Onthoud de variable die in een scope zitten pok nadat de functie is afgelopen
+		Make Adder		Zijn hier ook een manier voor
+		Modules		Zijn hier ook een manier voor
+Old & New JavaScript -> 2 main techniques
+1.	Polyfilling	
+Een nieuwe functie laten werken door soortgelijk code, maar die werkt wel in oudere browsers.
+2.	Transpilling
+Een tool die jouw nieuwe code verandert naar oude code
+
+Non-Javascript	Niet in directe controle van JS
+			DOM
+			Alert
+			Console.log
+
