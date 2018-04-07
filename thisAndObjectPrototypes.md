@@ -25,7 +25,53 @@
 **Call stack**: the stack of functions that have been called to get us to the current moment in execution.  
 **Tip**: To see the call stack, go to the developer tools in the browser and set a breakpoint on the function. The tool will show you a list of functions that have been called to get to that line, which will be your call stack. Now find the second item from the top, that will show you the real call-site.  
 
-###
+Where does ```this``` refer to?
+You have to ask yourself: where was the function invoked(aangeroepen)?
+4 rules: 
+- implicit binding
+- explicit binding
+- new binding
+- window binding
+
+### Implicit binding
+*Most common*
+When the function is called, look to the left of the dot: that is where ```this``` is referring to. 
+
+``` javascript 
+var me = {
+  name: 'Tyler', 
+  age: 25,
+  sayName: function(){
+    console.log(this.name);
+  }
+};
+
+me.sayName(); //this refers to me.
+```
+
+### Explicit binding
+With the keywords ```.call```, ```.apply``` and ```.bind``` you explicitly tell what ```this``` is. 
+```javascript 
+var sayName = function(){
+  console.log('My name is ' + this.name);
+};
+
+var stacey = {
+  name: 'Stacey', 
+  age: 34
+};
+
+sayName.call(stacey);
+```
+
+### New binding
+The new binding rule states that when a function is invoked with the ```new``` keyword, the ```this``` keyword inside that function is bound to the new object being constructed. 
+
+### Window binding
+If you invoke a function that uses the ```this``` keyword, but doesn't have anything left to the ```.```, it's not using the ```new``` binding and you're not using ```call```, ```apply``` or ```bind```, then the ```this``` keyword is going to default to the window object. 
+
+In strict mode this gives an error, if you're not in strict mode you get ```undefined```.
+This is the default rule, when none of the above apply. 
 
 ## Objects
 
