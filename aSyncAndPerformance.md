@@ -112,3 +112,11 @@ The key to making this work is built on two behaviors intrinsic to Promises:
 • Every time you call then(..) on a Promise, it creates and returns a new Promise, which we can chain with.
 • Whatever value you return from the then(..) call's fulfillment callback (the first parameter) is automatically set as the fulfillment of the chained Promise (from the first point).
 
+## Generators
+
+**GEEN TENTAMENVRAAG**
+
+## Program performance
+
+## Benchmarking and tuning
+
