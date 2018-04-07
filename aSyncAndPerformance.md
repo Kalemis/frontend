@@ -1,6 +1,15 @@
 
 # Async & Performance
 
+## Table of contents
+- [Asynchrony now and later](#asynchrony-now-and-later)  
+- [Callbacks](#callbacks)  
+- [Promises](#promises)  
+- [Generators](#generators)  
+- [Program performance](#program-performance)  
+- [Benchmarking and tuning](#benchmarking-and-tuning)  
+- [College notes](#college-notes)
+
 ## Asynchrony: now and later
 
 ### A program in chunks 
