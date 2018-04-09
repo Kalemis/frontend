@@ -52,6 +52,7 @@ Hierin kun je dan een let of een var gebruiken. Bij het gebruiken van een var in
 
 VOORBEELD 1:
 
+
 var a = 2;
 
 {
@@ -89,6 +90,7 @@ Als je dus een block hebt met daarin let’s moet je deze altijd boven aan zette
 There's one other form of block-scoped declaration to consider: the const, which creates constants.
 What exactly is a constant? It's a variable that's read-only after its initial value is set. You are not allowed to change the value the variable holds once it's been set
 Consider:
+
 {
 	const a = 2;
 	console.log( a );	// 2
@@ -97,6 +99,7 @@ Consider:
 }
 
 Constants are not a restriction on the value itself, but on the variable's assignment of that value. In other words, the value is not frozen or immutable because of const, just the assignment of it. If the value is complex, such as an object or array, the contents of the value can still be modified:
+
 {
 	const a = [1,2,3];
 	a.push( 4 );
@@ -122,13 +125,14 @@ foo( ...[1,2,3] );				// 1 2 3
 When ... is used in front of an array (actually, any iterable, which we cover in Chapter 3), it acts to "spread" it out into its individual values.
 You'll typically see that usage as is shown in that previous snippet, when spreading out an array as a set of arguments to a function call
 But ... can be used to spread out/expand a value in other contexts as well, such as inside another array declaration:
+
 var a = [2,3,4];
 var b = [ 1, ...a, 5 ];
 
 console.log( b );					// [1,2,3,4,5]
 
-
 The other common usage of ... can be seen as essentially the opposite; instead of spreading a value out, the ...gathers a set of values together into an array. Consider:
+
 function foo(x, y, ...z) {
 	console.log( x, y, z );
 }
@@ -145,4 +149,36 @@ function foo(...args) {
 foo( 1, 2, 3, 4, 5);			// [1,2,3,4,5]
 
 The ...args in the foo(..) function declaration is usually called "rest parameters," because you're collecting the rest of the parameters.
+
+## Symbols
+
+Here's how you create a symbol:
+
+var sym = Symbol( "some optional description" );
+typeof sym;		// "symbol"
+
+Some things to note:
+* You cannot and should not use new with Symbol(..). It's not a constructor, nor are you producing an object.
+* The parameter passed to Symbol(..) is optional. If passed, it should be a string that gives a friendly description for the symbol's purpose.
+* The typeof output is a new value ("symbol") that is the primary way to identify a symbol.
+The main point of a symbol is to create a string-like value that can't collide with any other value. So, for example, consider using a symbol as a constant representing an event name:
+const EVT_LOGIN = Symbol( "event.login" );
+
+You'd then use EVT_LOGIN in place of a generic string literal like "event.login":
+
+evthub.listen( EVT_LOGIN, function(data){
+	// ..
+} );
+The benefit here is that EVT_LOGIN holds a value that cannot be duplicated (accidentally or otherwise) by any other value, so it is impossible for there to be any confusion of which event is being dispatched or handled.
+
+You may use a symbol directly as a property name/key in an object, such as a special property that you want to treat as hidden or meta in usage. It's important to know that although you intend to treat it as such, it is not actually a hidden or untouchable property.
+
+One mild downside to using symbols as in the last few examples is that the EVT_LOGIN and INSTANCE variables had to be stored in an outer scope (perhaps even the global scope), or otherwise somehow stored in a publicly available location, so that all parts of the code that need to use the symbols can access them.
+
+Symbol.for(..) looks in the global symbol registry to see if a symbol is already stored with the provided description text, and returns it if so. If not, it creates one to return. In other words, the global symbol registry treats symbol values, by description text, as singletons themselves.
+But that also means that any part of your application can retrieve the symbol from the registry using Symbol.for(..), as long as the matching description name is used.
+
+If a symbol is used as a property/key of an object, it's stored in a special way so that the property will not show up in a normal enumeration of the object's properties:
+
+Object.getOwnPropertySymbols( o );	// [ Symbol(bar) ]
 
